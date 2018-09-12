@@ -1,0 +1,208 @@
+
+ enum NomRequestStatus {
+ 	NOMINATED,
+    REJECTED,
+    ACCEPTED
+ }
+entity Nomination (contr_nom){
+ gasDate LocalDate,
+ requestedRcptQty Integer,
+ reqestedDlvryQty Integer,
+ scheduledRcptQty Integer,
+ scheduledDlvryQty Integer,
+ requestStatus NomRequestStatus,
+ updater	String,
+ updateTimeStamp ZonedDateTime,
+ businessUnit String
+}
+
+entity ReductionReason {
+  reason String,
+  proprieteryReasonCode String,
+
+}
+entity Activity (activity) {
+contrId String,
+activityNbr String,
+ updater	String,
+ updateTimeStamp ZonedDateTime,
+ businessUnit String
+}
+
+
+entity RateSched (rt_sched){
+rsType String,
+rateScheduleCD String,
+ updater	String,
+ updateTimeStamp ZonedDateTime,
+ businessUnit String
+
+}
+
+entity RateSchedVald (rt_sched_vald){
+validType String,
+updater	String,
+updateTimeStamp ZonedDateTime,
+ businessUnit String
+}
+
+entity NominationPriority (contr_nom_prty) {
+
+ gasDate LocalDate,
+ prtyTp String,
+oldQty Integer,
+ newQty Integer,
+ subType String,
+ dirOfFlow String,
+  updater	String,
+  updateTimeStamp ZonedDateTime,
+ businessUnit String
+}
+
+entity Contract {
+contrId String,
+status String,
+ updater	String,
+ updateTimeStamp ZonedDateTime,
+ businessUnit String
+}
+
+entity ContrLoc (contr_loc){
+  type String,
+  quantity Integer,
+  effectiveFromDate LocalDate,
+  effectiveToDate LocalDate,
+   updater	String,
+   updateTimeStamp ZonedDateTime,
+ businessUnit String
+
+}
+relationship OneToOne {
+	Nomination{activity(activityNbr)} to Activity
+    NominationPriority{activity(activityNbr)} to Activity
+    
+}
+relationship OneToMany {
+	Nomination{priorities} to NominationPriority
+}
+relationship OneToMany {
+	RateSched{rtSchedVald} to RateSchedVald{rateSchd(rateScheduleCD)}
+}
+relationship OneToMany {
+	Contract{contrLoc} to ContrLoc
+}
+relationship OneToOne {
+	Nomination{contr} to Contract
+    NominationPriority{contr} to Contract
+}
+
+relationship OneToOne {
+	Contact{loginId(login)} to User
+}
+
+relationship OneToOne {
+	Activity{rtSched(rateScheduleCD)} to RateSched
+}
+
+relationship OneToOne {
+	Activity{receiptLocation(locationNbr)} to MeasurementStation
+    Activity{deliveryLocation(locationNbr)} to MeasurementStation
+	Activity{upstreamContract(contrId)} to Contract
+	Activity{downstreamContract(contrId)} to Contract
+    Activity{upstreamBA(baAbbr)} to BusinessAssociate
+	Activity{downstreamBA(baAbbr)} to BusinessAssociate
+    ContrLoc{location(locationNbr)} to MeasurementStation
+}
+
+
+
+entity BusinessAssociate (bus_assoc){
+
+ baName String,
+    baAbbr String,
+    baNbr  String,
+    baDunsNbr String,
+
+
+}
+entity BusinessAssociateAddress (ba_address) {
+
+addLine1 String,
+addressNbr String,
+addLine2 String,
+city	String,
+state	String,
+zipCode String,
+
+
+}
+
+entity MeasurementStation (meas_station){
+ locationNbr String,
+ milepostNbr Double,
+ upstreamPipeNode String,
+ downStreamPipeNode String,
+ businessUnit String,
+ updater String,
+ updateTimestamp ZonedDateTime,
+}
+
+entity LocationBA (loc_ba) {
+ locationNbr String,
+ locationBAType String,
+ businessUnit String,
+ updater String,
+ updateTimestamp ZonedDateTime,
+}
+
+entity Contact {
+firstName String,
+lastName String,
+updater String,
+ updateTimestamp ZonedDateTime,
+}
+
+entity BusinessUnit (business_unit) {
+ businessUnit String
+ businessAssociateNbr String,
+ ediPipeId	String,
+ updater String,
+ updateTimestamp ZonedDateTime,
+}
+
+entity BusinessAssociateContact (ba_contact){
+ beginDate LocalDate,
+ endDate LocalDate
+
+}
+
+
+relationship OneToOne {
+ LocationBA{locBAType(baAbbr)} to BusinessAssociate
+BusinessAssociateContact {ba(baAbbr)} to BusinessAssociate
+	BusinessAssociateContact {contact} to Contact
+ BusinessAssociateContact {mailAddress} to BusinessAssociateAddress
+ BusinessAssociateContact {deliveryAddress} to BusinessAssociateAddress
+ }
+
+
+
+
+relationship OneToMany {
+BusinessAssociate{contracts} to Contract{busAssoc(baAbbr)}
+BusinessAssociate{baContacts} to BusinessAssociateContact
+BusinessAssociate {businessAssociateAddress} to BusinessAssociateAddress
+
+}
+
+
+
+
+// Set pagination options
+
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+

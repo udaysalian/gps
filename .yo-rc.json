@@ -1,0 +1,50 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.oilgascs.gps"
+    },
+    "jhipsterVersion": "5.3.1",
+    "applicationType": "monolith",
+    "baseName": "gps_nextera",
+    "packageName": "com.oilgascs.gps",
+    "packageFolder": "com/oilgascs/gps",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NWE5NTJhMDkxOTdhYWE2ZTM4OThhZDA5ODcxNGIwOThmMzM4MTJmMGNkNDliZTJhZTBjOTI4NTFlYzNhOTM4OWFmODhjYzM3ZmNmZTIyMGQ2MDAyNjhhZjUyYmI4NmNjYzhlNzM2MDNmYzlkNzAzZjBmOTI3NmYzODM1MzA2OTg=",
+    "clientFramework": "angularX",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-nav-element",
+        "version": "2.0.7"
+      },
+      {
+        "name": "generator-jhipster-primeng-charts",
+        "version": "1.1.0"
+      },
+      {
+        "name": "generator-jhipster-primeng",
+        "version": "2.0.62"
+      },
+      {
+        "name": "generator-jhipster-docker",
+        "version": "2.5.0"
+      }
+    ],
+    "enableTranslation": false
+  }
+}
