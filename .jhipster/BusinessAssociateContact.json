@@ -1,0 +1,56 @@
+{
+    "name": "BusinessAssociateContact",
+    "fields": [
+        {
+            "fieldName": "beginDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "businessAssociate",
+            "otherEntityName": "businessAssociate",
+            "otherEntityField": "baAbbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessAssociateContact"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessAssociateContact"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "mailAddress",
+            "otherEntityName": "businessAssociateAddress",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessAssociateContact"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "deliveryAddress",
+            "otherEntityName": "businessAssociateAddress",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "businessAssociateContact"
+        }
+    ],
+    "changelogDate": "20180912014811",
+    "entityTableName": "ba_contact",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,46 @@
+{
+    "name": "BusinessAssociateAddress",
+    "fields": [
+        {
+            "fieldName": "addLine1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "addressNbr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "addLine2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zipCode",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "businessAssociate",
+            "otherEntityName": "businessAssociate",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180912014806",
+    "entityTableName": "ba_address",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

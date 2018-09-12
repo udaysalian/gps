@@ -1,0 +1,92 @@
+{
+    "name": "Activity",
+    "fields": [
+        {
+            "fieldName": "contrId",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activityNbr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimeStamp",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "rtSched",
+            "otherEntityName": "rateSched",
+            "otherEntityField": "rateScheduleCD",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "receiptLocation",
+            "otherEntityName": "measurementStation",
+            "otherEntityField": "locationNbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "deliveryLocation",
+            "otherEntityName": "measurementStation",
+            "otherEntityField": "locationNbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "upstreamContract",
+            "otherEntityName": "contract",
+            "otherEntityField": "contrId",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "downstreamContract",
+            "otherEntityName": "contract",
+            "otherEntityField": "contrId",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "upstreamBA",
+            "otherEntityName": "businessAssociate",
+            "otherEntityField": "baAbbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "downstreamBA",
+            "otherEntityName": "businessAssociate",
+            "otherEntityField": "baAbbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        }
+    ],
+    "changelogDate": "20180912014759",
+    "entityTableName": "activity",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

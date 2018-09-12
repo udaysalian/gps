@@ -80,7 +80,7 @@ entity ContrLoc (contr_loc){
 relationship OneToOne {
 	Nomination{activity(activityNbr)} to Activity
     NominationPriority{activity(activityNbr)} to Activity
-    
+
 }
 relationship OneToMany {
 	Nomination{priorities} to NominationPriority
@@ -92,8 +92,8 @@ relationship OneToMany {
 	Contract{contrLoc} to ContrLoc
 }
 relationship OneToOne {
-	Nomination{contr} to Contract
-    NominationPriority{contr} to Contract
+	Nomination{contract(contrId)} to Contract
+    NominationPriority{contract(contrId)} to Contract
 }
 
 relationship OneToOne {
@@ -102,6 +102,7 @@ relationship OneToOne {
 
 relationship OneToOne {
 	Activity{rtSched(rateScheduleCD)} to RateSched
+	Contract{rtSched(rateScheduleCD)} to RateSched
 }
 
 relationship OneToOne {
@@ -166,6 +167,7 @@ entity BusinessUnit (business_unit) {
  businessUnit String
  businessAssociateNbr String,
  ediPipeId	String,
+ companyLogo ImageBlob,
  updater String,
  updateTimestamp ZonedDateTime,
 }
@@ -178,8 +180,8 @@ entity BusinessAssociateContact (ba_contact){
 
 
 relationship OneToOne {
- LocationBA{locBAType(baAbbr)} to BusinessAssociate
-BusinessAssociateContact {ba(baAbbr)} to BusinessAssociate
+ LocationBA{busAssoc(baAbbr)} to BusinessAssociate
+BusinessAssociateContact {businessAssociate(baAbbr)} to BusinessAssociate
 	BusinessAssociateContact {contact} to Contact
  BusinessAssociateContact {mailAddress} to BusinessAssociateAddress
  BusinessAssociateContact {deliveryAddress} to BusinessAssociateAddress
@@ -190,7 +192,7 @@ BusinessAssociateContact {ba(baAbbr)} to BusinessAssociate
 
 relationship OneToMany {
 BusinessAssociate{contracts} to Contract{busAssoc(baAbbr)}
-BusinessAssociate{baContacts} to BusinessAssociateContact
+//BusinessAssociate{baContacts} to BusinessAssociateContact
 BusinessAssociate {businessAssociateAddress} to BusinessAssociateAddress
 
 }

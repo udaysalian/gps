@@ -1,0 +1,58 @@
+{
+    "name": "ContrLoc",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "effectiveFromDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "effectiveToDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "updater",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "updateTimeStamp",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "businessUnit",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "contract",
+            "otherEntityName": "contract",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "measurementStation",
+            "otherEntityField": "locationNbr",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "contrLoc"
+        }
+    ],
+    "changelogDate": "20180912014804",
+    "entityTableName": "contr_loc",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
