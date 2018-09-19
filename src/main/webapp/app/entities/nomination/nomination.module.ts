@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { GpsNexteraSharedModule } from 'app/shared';
 import {
     NominationComponent,
@@ -15,7 +16,7 @@ import {
 const ENTITY_STATES = [...nominationRoute, ...nominationPopupRoute];
 
 @NgModule({
-    imports: [GpsNexteraSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [AutoCompleteModule,BrowserAnimationsModule,GpsNexteraSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         NominationComponent,
         NominationDetailComponent,

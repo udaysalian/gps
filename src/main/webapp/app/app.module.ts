@@ -20,10 +20,11 @@ import { GpsNexteraEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
-
+import { AutoCompleteModule } from 'primeng/autocomplete';
 @NgModule({
     imports: [
         BrowserModule,
+        AutoCompleteModule,
         GpsNexteraAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
         GpsNexteraSharedModule,

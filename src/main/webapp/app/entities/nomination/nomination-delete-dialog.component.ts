@@ -7,6 +7,7 @@ import { JhiEventManager } from 'ng-jhipster';
 import { INomination } from 'app/shared/model/nomination.model';
 import { NominationService } from './nomination.service';
 
+
 @Component({
     selector: 'jhi-nomination-delete-dialog',
     templateUrl: './nomination-delete-dialog.component.html'

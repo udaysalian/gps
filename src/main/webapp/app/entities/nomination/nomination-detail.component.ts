@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
 import { INomination } from 'app/shared/model/nomination.model';
 
 @Component({
@@ -16,6 +15,7 @@ export class NominationDetailComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ nomination }) => {
             this.nomination = nomination;
         });
+
     }
 
     previousState() {

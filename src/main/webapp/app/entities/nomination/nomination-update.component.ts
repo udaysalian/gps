@@ -12,6 +12,7 @@ import { IActivity } from 'app/shared/model/activity.model';
 import { ActivityService } from 'app/entities/activity';
 import { IContract } from 'app/shared/model/contract.model';
 import { ContractService } from 'app/entities/contract';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
     selector: 'jhi-nomination-update',
@@ -22,6 +23,7 @@ export class NominationUpdateComponent implements OnInit {
     isSaving: boolean;
 
     activities: IActivity[];
+    activity_options: any[];
 
     contracts: IContract[];
     gasDateDp: any;
@@ -72,6 +74,9 @@ export class NominationUpdateComponent implements OnInit {
         );
     }
 
+    search(event) {
+        this.activity_options = this.activities.filter(act => act.activityNbr.startsWith(event.query));
+    }
     previousState() {
         window.history.back();
     }
