@@ -41,5 +41,5 @@ notifications:
     on_start: false     # default: false
 deploy:
   provider: heroku
-  api_key:
-    secure: "839a6976-fc81-44d2-aada-54a56e94113d"
+  app: gps-nextera
+  api_key: "839a6976-fc81-44d2-aada-54a56e94113d"
